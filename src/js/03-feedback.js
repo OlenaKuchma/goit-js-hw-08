@@ -39,19 +39,23 @@ window.addEventListener('load', loadFormState);
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
- 
+  const emailValue = emailInput.value.trim();
+  const messageValue = messageInput.value.trim();
+
+  if (emailValue === '' || messageValue === '') {
+    alert('Будь ласка, заповніть обидва поля.');
+    return;
+  }
+
   const state = {
-    email: emailInput.value,
-    message: messageInput.value
+    email: emailValue,
+    message: messageValue
   };
 
-  
   emailInput.value = '';
   messageInput.value = '';
 
- 
   localStorage.removeItem(storageKey);
-
 
   console.log(state);
 });
